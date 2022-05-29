@@ -1,0 +1,41 @@
+{% extends "students/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form | crispy }}
+    
+    
+    
+    {% if student %}
+        <div class="row mt-3">
+            <div class="col-8">
+                <input type="submit" class="btn btn-success btn-lg w-100" value="Update">    
+            </div>
+            <div class="col-4">
+                <button class="btn btn-secondary btn-lg w-100" > <a href="{% url 'list' %}" style="color: white ; text-decoration: none;">Back to List </a></button>
+            </div>
+        </div>
+    {% else %}
+        <div class="row mt-3">
+            <div class="col-8">
+                
+                <input type="submit" class="btn btn-success btn-lg w-100" value="Add">    
+            </div>
+            <div class="col-4">
+                <button class="btn btn-secondary btn-lg w-100" > 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                    <a href="{% url 'list' %}" style="color: white ; text-decoration: none;">Back to List </a></button>
+            </div>
+        </div>
+    {% endif %}
+        
+        
+
+</form>
+
+
+{% endblock content %}

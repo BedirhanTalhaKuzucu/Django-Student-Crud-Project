@@ -1,0 +1,15 @@
+h1{
+    color: red;
+    text-align: center;
+}
+
+#div_id_number{
+    display: inline-block;
+    width: 20%;
+
+}
+
+#div_id_path{
+    display: inline-block;
+    width: 75%;
+}

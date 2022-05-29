@@ -1,0 +1,42 @@
+{% extends "students/base.html" %}
+
+
+{% block content %}
+<table class="table w-100 text-center">
+    <thead>
+        <tr>
+            <th scope="col">Full Name</th>
+            <th scope="col">Path</th>
+            <th scope="col"> 
+                <button class="btn btn-outline-success" style="color: white ; text-decoration: none;"> 
+                    <a href="{% url 'home' %}"  class="text-success" style="text-decoration: none; " >Add New</a> 
+                </button> 
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for student in students %}
+        <tr>
+            <td> {{ student.fullname }} </td>
+            <td> {{ student.path }} </td>
+            <td>
+                <button class="btn btn-default">
+                    <a href="{% url 'update' student.id %}"> <i class="bi bi-pen"></i></a>
+                </button>
+                <form action="{% url 'delete' student.id %}" method="POST" style="display: inline;">
+                    {% csrf_token %}
+                    <!-- <input type="submit" value="Delete"> -->
+                    <button type="submit" class="btn btn-default">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+
+{% endblock content %}
